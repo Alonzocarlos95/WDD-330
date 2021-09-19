@@ -1,0 +1,60 @@
+body{
+    box-sizing: border-box;
+}
+
+header {
+    border-bottom: 1px solid green;
+}
+
+.main_header{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+}
+
+aside {
+    width: 20%;
+    height: 50%;
+    border-right: 1px solid green;
+    
+}
+
+aside .user {
+    align-self: center;
+    padding-left: 0.5em;
+}
+
+
+
+.nav_list1 {
+    list-style-type: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav_list1 li{
+    color: blue;
+}
+
+.studentName {
+    border-bottom: 1px solid green;
+    display: flex;
+    justify-content:start;
+    padding-left: 2.5em;
+}
+footer {
+    border-top: 1px solid green;
+    text-align: center;
+    clear: both;
+}
+.f_rights {
+    text-align: center;
+    color: green;
+}
+
+#content{
+    margin: 1em;
+}
