@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Local Storage | Web Page</title>
+    </head>
+    <body>
+        <main>
+            <h1>Story Editor</h1>
+            <form>
+                <label>Story Name:</label>
+                <input type="text" id="name_input">
+                <section>
+                <button  onclick="loadStory()">Find and Edit it</button>
+                <button  onclick="saveStory()">Save it</button>
+                <button  onclick="displayStory()">Display it</button>
+                </section>
+                <textarea id="story_editor" placeholder="Write a totally awesome history here."></textarea>
+            </form>
+            <section id="story_display"></section>
+        </main>
+        <footer>
+
+        </footer>
+        <script src="js_source/events.js"></script>
+        </body>
+</html>
