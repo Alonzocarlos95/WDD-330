@@ -83,11 +83,45 @@ const list = [
     }
 ]
 
+let note1 = 'This week,I learned to use the Local Storage property of Javascript. It allows to save key/value pairs in a web browser.<br/> The localStorage object stores data with no expiration date. The data will not be deleted when the browser is closed, and will be available the next day, week, or year.The localStorage property is read-only. <br/> The rest of the reading was just a review.';
+let note2 = "For this week, I learned the different approaches to creating arrays in Javascript. </br>I learned to declare arrays, deleting elements from an array, destructing arrays, removing the first and the last element from an array, appending a new element at the beggining and at the end of an array using the methods: push() and unshift(), creating subarrays, removing an element permanently without letting any value undefined, reversing the order of an array by using the reverse() method, sorting the order of an array using sort(), and to create multidimensional arrays.";
+let note3 = "No Available";
+let note4 = "No Available";
+let note5 = "No Available";
+let note6 = "No Available";
+let note7 = "No Available";
+let note8 = "No Available";
+let note9 = "No Available";
+let note10 = "No Available";
+let note11 = "No Available";
+let note12 = "No Available";
+let note13 = "No Available";
+let note14 = "No Available";
+
+const WeekExercises = [
+    ["W01/exercises/localStorage/localStorage.html",note1],
+    ["W02/exercises/soccerGame.html",note2],
+    ["W03/exercises/",note3],
+    ["W04/exercises/",note4],
+    ["W05/exercises/",note5],
+    ["W06/exercises/",note6],
+    ["W07/exercises/",note7],
+    ["W08/exercises/",note8],
+    ["W09/exercises/",note9],
+    ["W10/exercises/",note10],
+    ["W11/exercises/",note11],
+    ["W12/exercises/",note12],
+    ["W13/exercises/",note13],
+    ["W14/exercises/",note14]
+];
+
+
 /***Get ID of List of Items****/
 let listOfItems = document.getElementById("listOfWeeks");
 for(var i = 0; i < list.length; i++){
+    // debugger;
     var li_element = document.createElement("li");
-    li_element.innerHTML = "<div class='test_list' style='display:flex;cursor:pointer;'><i class='material-icons'>navigate_next</i><span>"+list[i].label+"</span></div><div id='subList"+i+"' class='sub_list_week' style='display:none;'><ul style='list-style-type:none;'><li style='display:flex;cursor:pointer;' onclick='myFunction()'><i class='material-icons' style='color:#c2e7da;'>book</i><span><a href='#'>"+list[i].notes+"</a></span></li><li style='display:flex;cursor:pointer;'><i class='material-icons' style='color:#c2e7da;'>emoji_objects</i><span><a href='W01/exercises/localStorage/localStorage.html'>"+list[i].exercises+"</a></span></li></ul></div>";
+    li_element.innerHTML = "<div class='test_list' id='mainList_"+i+"' onclick='transforming(this.id)' style='display:flex;cursor:pointer;'><i class='material-icons'>navigate_next</i><span>"+list[i].label+"</span></div><div id='subList"+i+"' class='sub_list_week' style='display:none;'><ul style='list-style-type:none;'><li style='display:flex;cursor:pointer;' onclick='myFunction(\""+WeekExercises[i][1]+"\")'><i class='material-icons' style='color:#c2e7da;'>book</i><span><a href='#'>"+list[i].notes+"</a></span></li><li style='display:flex;cursor:pointer;'><i class='material-icons' style='color:#c2e7da;'>emoji_objects</i><span><a href="+WeekExercises[i][0]+">"+list[i].exercises+"</a></span></li></ul></div>";
     li_element.setAttribute("style","margin-bottom:0.5em;");
     //li_element.setAttribute("class","test_list");
     listOfItems.appendChild(li_element);
@@ -98,26 +132,34 @@ let list_events = document.getElementsByClassName("test_list");
 for (var i =0; i < list_events.length;i++){
     (function(index){
         list_events[index].onclick = function(){
-            debugger;
+            // debugger;
             //alert("I am list "+ index);
             if(document.getElementById('subList'+index+'').style.display == 'block'){
             document.getElementById('subList'+index+'').style.display = 'none';
+            document.getElementById('mainList_'+index+'').firstChild.textContent = 'navigate_next';
+            
             }
             else{
                 document.getElementById('subList'+index+'').style.display = 'block';
+                document.getElementById('mainList_'+index+'').firstChild.textContent = 'expand_more';
             }
         };
     })(i)
 }
 
-let note1 = 'This week,I learned to use the Local Storage property of Javascript. It allows to save key/value pairs in a web browser.<br/> The localStorage object stores data with no expiration date. The data will not be deleted when the browser is closed, and will be available the next day, week, or year.The localStorage property is read-only. <br/> The rest of the reading was just a review.';
 
 /*
 document.getElementById('subList0').onclick=function(){
 document.getElementById("content").innerHTML=note1;
 }
 */  
-function myFunction(){
+function myFunction(x){
     debugger;
-    document.getElementById("content").innerHTML=note1;
+    document.getElementById("content").innerHTML=x;
 }
+
+// function transforming(item){
+//     debugger;
+//     document.getElementById('item').style.color = "#FF0000"
+//     alert('Gotcha');
+// }

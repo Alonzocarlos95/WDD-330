@@ -57,4 +57,5 @@ footer {
 
 #content{
     margin: 1em;
+    max-width: 70em;
 }
