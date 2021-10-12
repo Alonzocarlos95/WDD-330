@@ -86,7 +86,7 @@ const list = [
 let note1 = 'This week,I learned to use the Local Storage property of Javascript. It allows to save key/value pairs in a web browser.<br/> The localStorage object stores data with no expiration date. The data will not be deleted when the browser is closed, and will be available the next day, week, or year.The localStorage property is read-only. <br/> The rest of the reading was just a review.';
 let note2 = "For this week, I learned the different approaches to creating arrays in Javascript. </br>I learned to declare arrays, deleting elements from an array, destructing arrays, removing the first and the last element from an array, appending a new element at the beggining and at the end of an array using the methods: push() and unshift(), creating subarrays, removing an element permanently without letting any value undefined, reversing the order of an array by using the reverse() method, sorting the order of an array using sort(), and to create multidimensional arrays.";
 let note3 = "This week I learned about objects, DOM, and Events.</br> I learned to create objects literals and accesing to their properties by using the dot notation.</br> The Document Object Model or DOM is a pawerful tool to manipute html tags.</br> We can use Event Listeners to call functions when an event occurs, such as mouse events, keybord events, and touch events.";
-let note4 = "No Available";
+let note4 = "This week I learned about html forms. The HTML form on a web page allows a user to enter data that is sent to a server for processing.</br> Forms can resemble paper or database forms because web users fill out the forms using checkboxes, radio buttons, or text fields.</br>For example, forms can be used to enter shipping or credit card data to order a product, or can be used to retrieve search results from a search engine.</br>The HTML form element can contain one or more of the following form elements:</br><ul><li>input</li><li>label</li><li>select</li><li>textarea</li><li>button</li><li>fieldset</li><li>legend</li><li>datalist</li><li>output</li></ul>";
 let note5 = "No Available";
 let note6 = "No Available";
 let note7 = "No Available";
@@ -102,7 +102,7 @@ const WeekExercises = [
     ["W01/exercises/localStorage/localStorage.html",note1],
     ["W02/exercises/soccerGame.html",note2],
     ["W03/exercises/pig_game.html",note3],
-    ["W04/exercises/",note4],
+    ["W04/exercises/forms.html",note4],
     ["W05/exercises/",note5],
     ["W06/exercises/",note6],
     ["W07/exercises/",note7],
