@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDD 330 | Forms</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <heder>
+
+    </heder>
+    <main>
+        <form action="" method="POST">
+            <div class="container personal_info">
+            <h2 class="info">Personal</h2>
+            <label>Name</label>
+            <input type="text" name="name" id="name" autofocus placeholder="Carlos">
+            <label>Last Name</label>
+            <input type="text" name="lastName" id="lastName" placeholder="Alonzo">
+            <label>Date of Birth</label>
+            <input type="date" name="date" id="date">
+            <label>What is your favorite animal?</label>
+            <select>
+                <option selected>Tiger</option>
+                <option value="">Cat</option>
+                <option>Lion</option>
+                <option>Horse</option>
+                <option>Butterfly</option>
+                <option>Dog</option>
+            </select>
+            </div>
+            <div class="container account_info">
+                <h2 class="info">Account</h2>
+                <label>Email</label>
+                <input type="email" name="email" id="email" placeholder="carlos@example.com">
+                <label>Password</label>
+                <input type="password" name="password" id="password">
+                <label>Verify Password</label>
+                <input type="password" name="verifyPass" id="verifyPass">
+            </div>
+           <div class="container contact_info">
+               <h2 class="info">Contact</h2>
+               <label>Address</label>
+               <input type="text" name="address" id="address" placeholder="938 Jackson St.">
+                <label>City</label>
+                <input type="text" name="city" id="city" placeholder="Utah">
+                <label>State</label>
+                <select>
+                    <option selected>- Select your State -</option>
+                    <option>Idaho</option>
+                    <option>Utah</option>
+                    <option>Washington</option>
+                    <option>California</option>
+                </select>
+                <label>Phone</label>
+                <input type="tel" name="phone" id="phone"> 
+            </div>
+            <button type="submit">Create Account</button>
+        </form>
+    </main>
+    <script src="js_w04/js04.js"></script>
+</body>
+</html>

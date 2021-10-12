@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    max-width: 20%;
+    margin: auto;
+    /* border: 1px solid red; */
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;}
+
+input{
+    max-width: 18em;
+    height: 2em;
+    margin-bottom: 1.3em;
+}
+
+select {
+    max-width: 18em;
+    height: 2em;
+    margin-bottom: 1.3em;
+}
+
+button {
+    width: 19em;
+    height: 2em;
+    cursor: pointer;
+    background-color:#4eb5f1;
+    border:0.16em solid #FFFFFF;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 1px;
+}
+
+.info {
+    border-bottom: 1px solid #C0C0C0;
+} 
