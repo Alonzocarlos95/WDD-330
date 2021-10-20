@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/small.css" media="screen">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,100&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,9 +26,16 @@
         <div class="notes">
         <img id="no_tasks" src="images/palms-300x220.png" alt="No tasks">
     </div>
+    <div class="new_task" id="new_todo">
+        <label>What is there to do?</label>
+        <input type="text" name="todo" id="todo" placeholder="Enter the task">
+        <label>Deadline</label>
+        <input type="date" id="date" name="date" placeholder="No Deadline set">
+    </div>
     </main>
     <div class="add_task">
         <button id="add" class="bounce">+</button>
         </div>
+        <script src="js/todo.js"></script>
 </body>
 </html>
