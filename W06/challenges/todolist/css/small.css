@@ -1,0 +1,80 @@
+body{
+    box-sizing: border-box;
+    background-color: #0D3B66;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    margin: 0;
+    background-color: #3E92CC;
+}
+
+nav {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  }
+
+ul {
+    margin-top: 0;
+}
+header nav ul{
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul li img{
+    max-width: 3em;
+    max-height: 2.5em;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+ul li span {
+    color: #FCFCFF;
+    padding-top: 5px;
+}
+
+.label_list {
+    display: block;
+    font-family: 'Poppins',"Segoe UI", Roboto, sans-serif !important;
+    font-weight: bold;
+}
+
+#no_tasks {
+    /* margin: auto;
+    width: 30%; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add_task{
+    position: fixed;
+    bottom: 5px;
+    right: 10px;
+    animation: bounce 1s .5s;
+    transform: scale(0.85);
+     animation-iteration-count: infinite;
+}
+
+#add{
+    background-color: #FCFCFF;
+    border: none;
+    border-radius: 50%;
+    color: #3D348B;
+    text-align: center;
+    font-size: 1.8em;
+    padding: 10px 20px;
+    cursor: pointer;
+
+}
+
+@keyframes bounce {
+    0% { transform: scale(1.1); opacity: 1 }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    60% { transform: scale(0.6); opacity: 1 }
+    80% { transform: scale(0.95)  }
+    100% { transform: scale(0.85) }
+  }
