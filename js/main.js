@@ -115,13 +115,30 @@ const WeekExercises = [
     ["W14/exercises/",note14]
 ];
 
+const WeekChallenges = [
+    ["W01/exercises/localStorage/localStorage.html"],
+    ["W02/exercises/soccerGame.html"],
+    ["W03/exercises/pig_game.html"],
+    ["W04/exercises/forms.html"],
+    ["W05/exercises/"],
+    ["W06/challenges/todolist/home.html"],
+    ["W07/exercises/"],
+    ["W08/exercises/"],
+    ["W09/exercises/"],
+    ["W10/exercises/"],
+    ["W11/exercises/"],
+    ["W12/exercises/"],
+    ["W13/exercises/"],
+    ["W14/exercises/"]
+];
+
 
 /***Get ID of List of Items****/
 let listOfItems = document.getElementById("listOfWeeks");
 for(var i = 0; i < list.length; i++){
     // debugger;
     var li_element = document.createElement("li");
-    li_element.innerHTML = "<div class='test_list' id='mainList_"+i+"' onclick='transforming(this.id)' style='display:flex;cursor:pointer;'><i class='material-icons'>navigate_next</i><span>"+list[i].label+"</span></div><div id='subList"+i+"' class='sub_list_week' style='display:none;'><ul style='list-style-type:none;'><li style='display:flex;cursor:pointer;' onclick='myFunction(\""+WeekExercises[i][1]+"\")'><i class='material-icons' style='color:#c2e7da;'>book</i><span><a href='#'>"+list[i].notes+"</a></span></li><li style='display:flex;cursor:pointer;'><i class='material-icons' style='color:#c2e7da;'>emoji_objects</i><span><a href="+WeekExercises[i][0]+">"+list[i].exercises+"</a></span></li></ul></div>";
+    li_element.innerHTML = "<div class='test_list' id='mainList_"+i+"' onclick='transforming(this.id)' style='display:flex;cursor:pointer;'><i class='material-icons'>navigate_next</i><span>"+list[i].label+"</span></div><div id='subList"+i+"' class='sub_list_week' style='display:none;'><ul style='list-style-type:none;'><li style='display:flex;cursor:pointer;' onclick='myFunction(\""+WeekExercises[i][1]+"\")'><i class='material-icons' style='color:#c2e7da;'>book</i><span><a href='#'>"+list[i].notes+"</a></span></li><li style='display:flex;cursor:pointer;'><i class='material-icons' style='color:#c2e7da;'>emoji_objects</i><span><a href="+WeekExercises[i][0]+">"+list[i].exercises+"</a></span></li><li style='display:flex;cursor:pointer;'><i class='material-icons' style='color:#c2e7da;'>gamepad</i><span><a href="+WeekChallenges[i][0]+">"+list[i].challenges+"</a></span></li></ul></div>";
     li_element.setAttribute("style","margin-bottom:0.5em;");
     //li_element.setAttribute("class","test_list");
     listOfItems.appendChild(li_element);
