@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/small.css" media="screen">
+    <!--ClockPicker libraries-->
+    <link rel="stylesheet" href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css"></link>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Material Icons and Fonts-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,100&display=swap" rel="stylesheet">
+    <!--Small view-->
+    <link rel="stylesheet" href="css/small.css" media="screen">
+
+    <title>Document</title>
+  
 </head>
 <body>
     <header>
@@ -26,16 +33,30 @@
         <div class="notes">
         <img id="no_tasks" src="images/palms-300x220.png" alt="No tasks">
     </div>
+    <div class="main_list" id="main_list">
+    </div>
+    <div class="new_task_container" id="container_schedule">
     <div class="new_task" id="new_todo">
-        <label>What is there to do?</label>
-        <input type="text" name="todo" id="todo" placeholder="Enter the task">
-        <label>Deadline</label>
-        <input type="date" id="date" name="date" placeholder="No Deadline set">
+        <label>What is to be done?</label>
+        <div class="new_input">
+        <input type="text" name="todo" id="todo" placeholder="Enter task here">
+        <span class="material-icons">keyboard_voice</span>
+        </div>
+        <label>Due Date</label>
+        <input type="date" id="date" name="date" placeholder="Date not set">
+    </div>
+    <div class="new_task_group2">
+        <div class="new_time" id="new_time_container">
+        <input type="text" name="time" id="time" placeholder="Time not set(all day)">
+        <span class="material-icons">schedule</span>
+        </div>
+    </div>
     </div>
     </main>
     <div class="add_task">
         <button id="add" class="bounce">+</button>
         </div>
+        <script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
         <script src="js/todo.js"></script>
 </body>
 </html>
