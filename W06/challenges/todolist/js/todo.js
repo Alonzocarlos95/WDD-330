@@ -1,5 +1,6 @@
+// const toDoList = [];
+
 let indicador = 0;
-counter = 0;
 let list_container = document.getElementById('main_list');
 document.getElementById('container_schedule').style.display = 'none';
 const chosenDate = document.getElementById("date");
@@ -8,14 +9,28 @@ time.style.display = 'none';
 
 document.getElementById('add').addEventListener('click', () => {
     document.getElementById('container_schedule').style.display = 'block';
-    document.getElementById('add').innerHTML = '<span class="material-icons">done</span>';
+    document.getElementById('add').innerHTML = '<span class="material-icons">done</span>';  
+    let inputNewTask = document.getElementById("todo");
+    let valInputNewTask = inputNewTask.value;
+    let valInputNewTask2 = inputNewTask.value;
+
     if(indicador === 0){
         indicador = 1;
-        counter++;
-   
+        list_container.style.display = "none";
+        
     }else {
-        indicador = 0;
-        taskCreated();
+           if(!isBlank(valInputNewTask)){ //Valida si el valor del input no es null o undefined o whitespace
+            indicador = 0;
+            inputNewTask.value = "";
+            inputNewTask.focus();
+            taskCreated();
+            manageTask(valInputNewTask2);
+            
+            }
+            else {
+                alert("Enter task at first.");
+            }
+        
     }
 } );
 document.getElementById('date').addEventListener('change',() => {
@@ -23,10 +38,10 @@ document.getElementById('date').addEventListener('change',() => {
     time.style.display = 'flex';
 });
 
-if(chosenDate.value == null){
-    // debugger;
-    console.log("It has a value " + chosenDate.value);
-}
+// if(chosenDate.value == null){
+//     // debugger;
+//     console.log("It has a value " + chosenDate.value);
+// }
 
 
  function taskCreated(){
@@ -35,41 +50,10 @@ if(chosenDate.value == null){
     if(document.getElementsByClassName('notes').length >= 1){
         document.getElementsByClassName('notes')[0].remove();
     }
-    addingToList(counter);
-    // document.getElementsByClassName('notes')[0].style.display = 'none';
     document.getElementById('add').textContent = '+';
-    let task = document.getElementById("todo").value;
-    console.log(task);
-    
-// let currentTasks = document.createElement('li');
-// currentTasks.setAttribute('style','background-color:#3D348B;width:100%;');
-// currentTasks.innerHTML = '<input type = "checkbox">Esta es mi primer tarea';
-// listOfTasks.appendChild(currentTasks);
-// list_container.appendChild(listOfTasks);
  }
 
-function addingToList(counterOfItems){
-    if(counterOfItems === 1){
-        let listOfTasks = document.createElement('ul');
-        listOfTasks.id ='parentList';
-        listOfTasks.setAttribute('style','width:80%; display:flex;flex-direction:column;border:1px solid red; list-style-type:none;margin:auto;');
-        let currentTasks = document.createElement('li');
-        currentTasks.id = "item"+counterOfItems+"";
-        currentTasks.setAttribute('style','background-color:#3D348B;width:100%;');
-        currentTasks.innerHTML = '<input type = "checkbox">Esta es mi primer tarea';
-        listOfTasks.appendChild(currentTasks);
-        list_container.appendChild(listOfTasks);
-    }
-    else {
-        let currentTasks = document.createElement('li');
-        currentTasks.id = "item"+counterOfItems+"";
-        currentTasks.setAttribute('style','background-color:#3D348B;width:100%;');
-        currentTasks.innerHTML = '<input type = "checkbox">Esta es mi primer tarea';
-        document.getElementById('parentList').appendChild(currentTasks);
-        
-    }
-}
-/*Process of list of tasks */
+
 
 
 /*Clock picker functionality*/
@@ -108,3 +92,49 @@ $("input[name=time]").clockpicker({
                           }
   });
   
+
+  function isBlank(str) {
+      debugger;
+    return (!str || /^\s*$/.test(str));
+}
+
+function manageTask(getTask){
+    const todo = {
+        id: Date.now(),
+        content: getTask,
+        completed: false
+    }
+    storeData(todo);
+}
+
+//Local Storage Function
+function storeData(todo){
+    debugger;
+    let toDoList2 = null;
+    let storedL = localStorage["toDoList2"];
+    if(storedL == null){
+        toDoList2 = [];
+    } else {
+        toDoList2 = JSON.parse(storedL);
+    }
+       toDoList2.push(todo);
+       let allToDo = JSON.stringify(toDoList2);
+       localStorage["toDoList2"] = allToDo;
+       buildListOfTasks();
+}
+
+
+function buildListOfTasks(){
+    debugger;
+    let arrayOfStoredItems = localStorage["toDoList2"];
+    let toDoList = JSON.parse(arrayOfStoredItems);
+    for(let i = 0; i < toDoList.length; i++){
+        let currentTasks = document.createElement('li');
+        currentTasks.id = toDoList[i]["id"];
+        currentTasks.setAttribute('style','background-color:#3D348B;width:100%;margin:0 0 8px 0;padding:6px 4px 6px 4px');
+        currentTasks.innerHTML = '<input type = "checkbox"><span style="margin-left:2em;">'+toDoList[i]["content"]+'</span>';
+        document.getElementById('parentList').appendChild(currentTasks);
+    }
+    list_container.style.display = "block";
+    
+}
