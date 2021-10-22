@@ -131,7 +131,7 @@ function buildListOfTasks(){
     for(let i = 0; i < toDoList.length; i++){
         let currentTasks = document.createElement('li');
         currentTasks.id = toDoList[i]["id"];
-        currentTasks.setAttribute('style','background-color:#3D348B;width:100%;margin:0 0 8px 0;padding:6px 4px 6px 4px');
+        currentTasks.setAttribute('style','background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
         currentTasks.innerHTML = '<input type = "checkbox"><span style="margin-left:2em;">'+toDoList[i]["content"]+'</span>';
         document.getElementById('parentList').appendChild(currentTasks);
     }
