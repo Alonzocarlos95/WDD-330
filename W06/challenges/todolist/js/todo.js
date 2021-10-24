@@ -1,10 +1,11 @@
-// const toDoList = [];
+let toDoList = [];
 
 let indicador = 0;
 let list_container = document.getElementById('main_list');
 document.getElementById('container_schedule').style.display = 'none';
 const chosenDate = document.getElementById("date");
 const time = document.getElementById('new_time_container');
+let ulTasks = document.getElementById('parentList');
 time.style.display = 'none';
 
 document.getElementById('add').addEventListener('click', () => {
@@ -94,7 +95,7 @@ $("input[name=time]").clockpicker({
   
 
   function isBlank(str) {
-      debugger;
+    //debugger;
     return (!str || /^\s*$/.test(str));
 }
 
@@ -104,37 +105,65 @@ function manageTask(getTask){
         content: getTask,
         completed: false
     }
-    storeData(todo);
+    toDoList.push(todo);
+    addToLocalStorage(toDoList);
+    // storeData(todo);
 }
+
+
+function addToLocalStorage(toDoList){
+    debugger;
+    localStorage.setItem('toDoList',JSON.stringify(toDoList));
+
+    renderTodos(toDoList);
+}
+
+
+
+function renderTodos(toDoList){
+    debugger;
+    ulTasks.innerHTML = '';
+    toDoList.forEach(function(valInputNewTask2){
+        const checked = toDoList.completed ? 'checked': null;
+        let currentTasks = document.createElement('li');
+        currentTasks.id = valInputNewTask2.id;
+        currentTasks.setAttribute('style','background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
+        currentTasks.innerHTML = '<input type = "checkbox"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span>';
+        document.getElementById('parentList').appendChild(currentTasks);
+        });
+    list_container.style.display = "block";
+}
+
+
 
 //Local Storage Function
-function storeData(todo){
-    debugger;
-    let toDoList2 = null;
-    let storedL = localStorage["toDoList2"];
-    if(storedL == null){
-        toDoList2 = [];
-    } else {
-        toDoList2 = JSON.parse(storedL);
-    }
-       toDoList2.push(todo);
-       let allToDo = JSON.stringify(toDoList2);
-       localStorage["toDoList2"] = allToDo;
-       buildListOfTasks();
-}
+// function storeData(todo){
+//     debugger;
+//     let toDoList = null;
+//     let storedL = localStorage["toDoList"];
+//     if(storedL == null){
+//         toDoList = [];
+//     } else {
+//         toDoList = JSON.parse(storedL);
+//     }
+//        toDoList.push(todo);
+//        let allToDo = JSON.stringify(toDoList);
+//        localStorage["toDoList"] = allToDo;
+//        buildListOfTasks();
+// }
 
 
-function buildListOfTasks(){
-    debugger;
-    let arrayOfStoredItems = localStorage["toDoList2"];
-    let toDoList = JSON.parse(arrayOfStoredItems);
-    for(let i = 0; i < toDoList.length; i++){
-        let currentTasks = document.createElement('li');
-        currentTasks.id = toDoList[i]["id"];
-        currentTasks.setAttribute('style','background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
-        currentTasks.innerHTML = '<input type = "checkbox"><span style="margin-left:2em;">'+toDoList[i]["content"]+'</span>';
-        document.getElementById('parentList').appendChild(currentTasks);
-    }
-    list_container.style.display = "block";
+// function buildListOfTasks(){
+//     debugger;
+//     let arrayOfStoredItems = localStorage["toDoList"];
+//     let toDoList = JSON.parse(arrayOfStoredItems);
+//     for(let i = 0; i < toDoList.length; i++){
+//         let currentTasks = document.createElement('li');
+//         currentTasks.id = toDoList[i]["id"];
+//         currentTasks.setAttribute('style','background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
+//         currentTasks.innerHTML = '<input type = "checkbox"><span style="margin-left:2em;">'+toDoList[i]["content"]+'</span>';
+//         document.getElementById('parentList').appendChild(currentTasks);
+//     }
+//     list_container.style.display = "block";
     
-}
+// }
