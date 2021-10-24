@@ -14,6 +14,7 @@ document.getElementById('add').addEventListener('click', () => {
     let inputNewTask = document.getElementById("todo");
     let valInputNewTask = inputNewTask.value;
     let valInputNewTask2 = inputNewTask.value;
+    let dateSet = document.getElementById('date').value;
 
     if(indicador === 0){
         indicador = 1;
@@ -24,8 +25,9 @@ document.getElementById('add').addEventListener('click', () => {
             indicador = 0;
             inputNewTask.value = "";
             inputNewTask.focus();
+            let newDateSet = valDate(dateSet);
             taskCreated();
-            manageTask(valInputNewTask2);
+            manageTask(valInputNewTask2,newDateSet);
             
             }
             else {
@@ -99,11 +101,23 @@ $("input[name=time]").clockpicker({
     return (!str || /^\s*$/.test(str));
 }
 
-function manageTask(getTask){
+function valDate(dateToDo){
+    debugger;
+    if(dateToDo === null || dateToDo === ''){
+        dateToDo = "No date";
+        return dateToDo;
+    }
+    else {
+        return dateToDo;
+    }
+}
+
+function manageTask(getTask,dateSet){
     const todo = {
         id: Date.now(),
         content: getTask,
-        completed: false
+        completed: false,
+        date: dateSet
     }
     toDoList.push(todo);
     addToLocalStorage(toDoList);
@@ -127,14 +141,23 @@ function renderTodos(toDoList){
         const checked = toDoList.completed ? 'checked': null;
         let currentTasks = document.createElement('li');
         currentTasks.id = valInputNewTask2.id;
-        currentTasks.setAttribute('style','background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
-        currentTasks.innerHTML = '<input type = "checkbox"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span>';
+        currentTasks.setAttribute('style','display:flex;background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
+        currentTasks.innerHTML = '<input type = "checkbox"><div style="display:flex;flex-direction:column;"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span><span style="margin-left:2em;color:#17301C;">'+valInputNewTask2.date+'</span></div>';
         document.getElementById('parentList').appendChild(currentTasks);
         });
     list_container.style.display = "block";
 }
 
+function getFromLocalStorage(){
+    const getReference = localStorage.getItem('toDoList');
+    if(getReference){
+        document.querySelector('.notes').style.display = 'none';
+        toDoList = JSON.parse(getReference);
+        renderTodos(toDoList);
+    }
+}
 
+getFromLocalStorage();
 
 //Local Storage Function
 // function storeData(todo){
