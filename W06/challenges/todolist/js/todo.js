@@ -1,5 +1,6 @@
 let toDoList = [];
 
+let options = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
 let indicador = 0;
 let list_container = document.getElementById('main_list');
 document.getElementById('container_schedule').style.display = 'none';
@@ -102,12 +103,16 @@ $("input[name=time]").clockpicker({
 }
 
 function valDate(dateToDo){
-    debugger;
+    // debugger;
     if(dateToDo === null || dateToDo === ''){
         dateToDo = "No date";
         return dateToDo;
     }
     else {
+        dateToDo = new Date(dateToDo);
+        dateToDo.setDate(dateToDo.getDate()+1);
+        // testDate = new Date(Date.UTC(dateToDo));
+        dateToDo = dateToDo.toLocaleString('en-US',options);
         return dateToDo;
     }
 }
@@ -126,7 +131,7 @@ function manageTask(getTask,dateSet){
 
 
 function addToLocalStorage(toDoList){
-    debugger;
+    // debugger;
     localStorage.setItem('toDoList',JSON.stringify(toDoList));
 
     renderTodos(toDoList);
@@ -135,14 +140,15 @@ function addToLocalStorage(toDoList){
 
 
 function renderTodos(toDoList){
-    debugger;
+    // debugger;
     ulTasks.innerHTML = '';
-    toDoList.forEach(function(valInputNewTask2){
+    toDoList.forEach(function(valInputNewTask2,index){
+        console.log(index);
         const checked = toDoList.completed ? 'checked': null;
         let currentTasks = document.createElement('li');
         currentTasks.id = valInputNewTask2.id;
-        currentTasks.setAttribute('style','display:flex;background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
-        currentTasks.innerHTML = '<input type = "checkbox"><div style="display:flex;flex-direction:column;"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span><span style="margin-left:2em;color:#17301C;">'+valInputNewTask2.date+'</span></div>';
+        currentTasks.setAttribute('style','display:flex;background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;cursor:pointer;');
+        currentTasks.innerHTML = '<input id='+index+' type = "checkbox"  class="checkInactive"><div style="display:flex;flex-direction:column;"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span><span style="margin-left:2em;color:#17301C;">'+valInputNewTask2.date+'</span></div>';
         document.getElementById('parentList').appendChild(currentTasks);
         });
     list_container.style.display = "block";
@@ -156,6 +162,26 @@ function getFromLocalStorage(){
         renderTodos(toDoList);
     }
 }
+debugger;
+let checkbox = document.getElementById('parentList');
+checkbox.addEventListener('change',function(e){
+    debugger;
+    let idOfList = e.path[1].id;
+    if(toDoList[e.path[0].id].completed == false){
+        // alert("change to completed")
+        toDoList[e.path[0].id].completed = true;
+        document.getElementById(idOfList).childNodes[1].classList.add('checkActive');   //  setAttribute('style','text-decoration:line-through;');
+    }
+    // let y = e.path[1].id;
+    // let x = this.childNodes[2].firstElementChild;
+    // if(x.checked){
+    //     // alert('checked');
+    //     this.firstChild.firstChild.setAttribute('style','opacity:1;border-top-color: transparent;border-left-color: transparent;transform: rotate(45deg);-webkit-transform: rotate(45deg);border-radius: 0;left: 5px;top: -5px; width: 10px;')
+    // }else {
+    //     // this.firstChild.firstChild.setAttribute("style","position: absolute;left: 0;top: 0;opacity: .6;transition: all .12s, border-color .08s;width: 20px;border: 1px solid #6cc0e5;")
+
+    // }
+});
 
 getFromLocalStorage();
 

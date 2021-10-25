@@ -141,6 +141,21 @@ input[type=text],input[type=date] {
     padding:0;
 }
 
+.checkInactive {
+    align-self:center;
+    margin-left:10px;
+    transform: scale(1.5);
+    cursor:pointer;
+    border: 1px solid #6cc0e5;
+    opacity: .5;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
+
+.checkActive {
+    text-decoration:line-through;
+}
+
 /* #main_list {
     width: 100%;
     padding:15px;
