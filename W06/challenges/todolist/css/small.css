@@ -156,6 +156,18 @@ input[type=text],input[type=date] {
     text-decoration:line-through;
 }
 
+
+.clear{
+    border-radius: 50%;
+    align-self:center;
+    padding:0 0.3em 0 0.3em;
+    cursor: pointer;
+}
+
+.clear:hover {
+    background-color: #9D69A3;
+    opacity: .6;
+}
 /* #main_list {
     width: 100%;
     padding:15px;

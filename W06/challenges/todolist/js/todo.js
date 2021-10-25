@@ -147,8 +147,8 @@ function renderTodos(toDoList){
         const checked = toDoList.completed ? 'checked': null;
         let currentTasks = document.createElement('li');
         currentTasks.id = valInputNewTask2.id;
-        currentTasks.setAttribute('style','display:flex;background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;cursor:pointer;');
-        currentTasks.innerHTML = '<input id='+index+' type = "checkbox"  class="checkInactive"><div style="display:flex;flex-direction:column;"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span><span style="margin-left:2em;color:#17301C;">'+valInputNewTask2.date+'</span></div>';
+        currentTasks.setAttribute('style','display:flex;background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
+        currentTasks.innerHTML = '<input id='+index+' type = "checkbox"  class="checkInactive"><div style="display:flex;flex-direction:column;flex-grow:2;"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span><span style="margin-left:2em;color:#17301C;">'+valInputNewTask2.date+'</span></div><div class="clear"><span class="material-icons">clear</span></div>';
         document.getElementById('parentList').appendChild(currentTasks);
         });
     list_container.style.display = "block";
