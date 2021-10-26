@@ -162,10 +162,10 @@ function getFromLocalStorage(){
         renderTodos(toDoList);
     }
 }
-debugger;
+// debugger;
 let checkbox = document.getElementById('parentList');
 checkbox.addEventListener('change',function(e){
-    debugger;
+    // debugger;
     let idOfList = e.path[1].id;
     if(toDoList[e.path[0].id].completed == false){
         // alert("change to completed")
@@ -184,6 +184,23 @@ checkbox.addEventListener('change',function(e){
 });
 
 getFromLocalStorage();
+
+function deleteToDo(id){
+    debugger
+    alert(id);
+    toDoList = toDoList.filter(function(getTask){
+        return getTask.id != id;
+    });
+    addToLocalStorage(toDoList);
+}
+debugger;
+ulTasks.addEventListener('click',function(event){
+    debugger;
+    if(event.target.parentElement.classList.contains('clear')){
+        debugger;
+        deleteToDo(event.target.parentElement.parentElement.getAttribute('id'));
+    }
+});
 
 //Local Storage Function
 // function storeData(todo){
