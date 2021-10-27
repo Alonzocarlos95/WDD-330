@@ -262,15 +262,24 @@ ulTasks.addEventListener('click',function(event){
 
 
 //Close the dropdown if the user clicks outside it
-window.onclick = function(event){
-    if(!event.target.matches('.dropBtn')){
-        let dropDowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropDowns.length; i++) {
-          var openDropdown = dropDowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
+window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
     }
-}
+  } 
+
+
+//   function getList(){
+//       alert('pruebas');
+//   }
+
+//Drop down Events
+document.getElementById("myDropdown").addEventListener('click',function(event){
+    debugger;
+    if(event.target.localName === 'span'){
+        alert(event.target.id);
+    }
+});

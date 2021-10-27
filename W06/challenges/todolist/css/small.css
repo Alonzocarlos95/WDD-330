@@ -169,18 +169,23 @@ input[type=text],input[type=date] {
     opacity: .6;
 }
 
-.drop-down {
+
+
+
+/* Drop-down styles */
+
+/* .drop-down {
     cursor: pointer;
 }
 
-#filter-tasks{
+#filter-tasks{ */
     /* display: flex;
     justify-content: center; */
-    position: relative;
+    /* position: relative;
     display: inline-block;
-}
+} */
 
-
+/* 
 .dropdown-content span:hover {background-color: #ddd;}
 
 .dropdown-content{
@@ -200,9 +205,50 @@ input[type=text],input[type=date] {
     display: block;
 }
 
-.show {display: block;}
+.show {display: block;} */
 /* #main_list {
     width: 100%;
     padding:15px;
 } */
 
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #FCFCFF;
+    padding: inherit;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0D3B66;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(65, 2, 54, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content span{
+      float: none;
+      color: #FCFCFF;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+  }
+
+  .dropdown-content span:hover{
+    background-color: #ddd;
+  }
+
+  .show {
+    display: block;
+  }
