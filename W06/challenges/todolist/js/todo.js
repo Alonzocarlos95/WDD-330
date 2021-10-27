@@ -148,7 +148,16 @@ function renderTodos(toDoList){
         let currentTasks = document.createElement('li');
         currentTasks.id = valInputNewTask2.id;
         currentTasks.setAttribute('style','display:flex;background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
+        
+      
+
         currentTasks.innerHTML = '<input id='+index+' type = "checkbox"  class="checkInactive"><div style="display:flex;flex-direction:column;flex-grow:2;"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span><span style="margin-left:2em;color:#17301C;">'+valInputNewTask2.date+'</span></div><div class="clear"><span class="material-icons">clear</span></div>';
+        
+        if(valInputNewTask2.completed === true){
+            currentTasks.classList.add('checkActive');
+            currentTasks.firstChild.checked = true;
+        }  
+        
         document.getElementById('parentList').appendChild(currentTasks);
         });
     list_container.style.display = "block";
@@ -162,32 +171,59 @@ function getFromLocalStorage(){
         renderTodos(toDoList);
     }
 }
-// debugger;
-let checkbox = document.getElementById('parentList');
-checkbox.addEventListener('change',function(e){
-    // debugger;
-    let idOfList = e.path[1].id;
-    if(toDoList[e.path[0].id].completed == false){
-        // alert("change to completed")
-        toDoList[e.path[0].id].completed = true;
-        document.getElementById(idOfList).childNodes[1].classList.add('checkActive');   //  setAttribute('style','text-decoration:line-through;');
-    }
-    // let y = e.path[1].id;
-    // let x = this.childNodes[2].firstElementChild;
-    // if(x.checked){
-    //     // alert('checked');
-    //     this.firstChild.firstChild.setAttribute('style','opacity:1;border-top-color: transparent;border-left-color: transparent;transform: rotate(45deg);-webkit-transform: rotate(45deg);border-radius: 0;left: 5px;top: -5px; width: 10px;')
-    // }else {
-    //     // this.firstChild.firstChild.setAttribute("style","position: absolute;left: 0;top: 0;opacity: .6;transition: all .12s, border-color .08s;width: 20px;border: 1px solid #6cc0e5;")
 
-    // }
-});
+// document.querySelector('.dropBtn').addEventListener('click',() => {
+//     debugger;
+//     document.getElementById('myDropdown').classList.toggle('show');
+// });
+
+function showModal(){
+    document.getElementById('myDropdown').classList.toggle('show');
+}
+
+//     let dropDown_header = document.createElement('div');
+    
+//     dropDown_header.setAttribute('class','dropdown-content');
+//     dropDown_header.innerHTML = '<span>Finished</span>';
+//     document.getElementById('filter-tasks').appendChild(dropDown_header);
+//     //filter-tasks
+// })
+// debugger;
+// let checkbox = document.getElementById('parentList');
+// checkbox.addEventListener('change',function(e){
+//     // debugger;
+//     let idOfList = e.path[1].id;
+//     if(toDoList[e.path[0].id].completed == false){
+//         // alert("change to completed")
+//         toDoList[e.path[0].id].completed = true;
+//         document.getElementById(idOfList).childNodes[1].classList.add('checkActive');   //  setAttribute('style','text-decoration:line-through;');
+//     }
+//     let y = e.path[1].id;
+//     let x = this.childNodes[2].firstElementChild;
+//     if(x.checked){
+//         // alert('checked');
+//         this.firstChild.firstChild.setAttribute('style','opacity:1;border-top-color: transparent;border-left-color: transparent;transform: rotate(45deg);-webkit-transform: rotate(45deg);border-radius: 0;left: 5px;top: -5px; width: 10px;')
+//     }else {
+//         // this.firstChild.firstChild.setAttribute("style","position: absolute;left: 0;top: 0;opacity: .6;transition: all .12s, border-color .08s;width: 20px;border: 1px solid #6cc0e5;")
+
+//     }
+// });
 
 getFromLocalStorage();
 
+
+function toggle(id){
+    toDoList.forEach(function(item){
+        if(item.id == id){
+            item.completed = !item.completed;
+        }
+    });
+    addToLocalStorage(toDoList);
+}
+
 function deleteToDo(id){
     debugger
-    alert(id);
+    // alert(id);
     toDoList = toDoList.filter(function(getTask){
         return getTask.id != id;
     });
@@ -196,11 +232,17 @@ function deleteToDo(id){
 debugger;
 ulTasks.addEventListener('click',function(event){
     debugger;
+    if(event.target.type === 'checkbox'){
+        toggle(event.target.parentElement.getAttribute('id'));
+    }
     if(event.target.parentElement.classList.contains('clear')){
         debugger;
         deleteToDo(event.target.parentElement.parentElement.getAttribute('id'));
     }
 });
+
+
+//https://codepen.io/thecodingpie/pen/ExPQdqb?editors=1010
 
 //Local Storage Function
 // function storeData(todo){
@@ -219,17 +261,16 @@ ulTasks.addEventListener('click',function(event){
 // }
 
 
-// function buildListOfTasks(){
-//     debugger;
-//     let arrayOfStoredItems = localStorage["toDoList"];
-//     let toDoList = JSON.parse(arrayOfStoredItems);
-//     for(let i = 0; i < toDoList.length; i++){
-//         let currentTasks = document.createElement('li');
-//         currentTasks.id = toDoList[i]["id"];
-//         currentTasks.setAttribute('style','background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
-//         currentTasks.innerHTML = '<input type = "checkbox"><span style="margin-left:2em;">'+toDoList[i]["content"]+'</span>';
-//         document.getElementById('parentList').appendChild(currentTasks);
-//     }
-//     list_container.style.display = "block";
-    
-// }
+//Close the dropdown if the user clicks outside it
+window.onclick = function(event){
+    if(!event.target.matches('.dropBtn')){
+        let dropDowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropDowns.length; i++) {
+          var openDropdown = dropDowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+    }
+}

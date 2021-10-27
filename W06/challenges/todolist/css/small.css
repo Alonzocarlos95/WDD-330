@@ -168,6 +168,39 @@ input[type=text],input[type=date] {
     background-color: #9D69A3;
     opacity: .6;
 }
+
+.drop-down {
+    cursor: pointer;
+}
+
+#filter-tasks{
+    /* display: flex;
+    justify-content: center; */
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content span:hover {background-color: #ddd;}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content span{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {display: block;}
 /* #main_list {
     width: 100%;
     padding:15px;
