@@ -10,6 +10,7 @@ let ulTasks = document.getElementById('parentList');
 time.style.display = 'none';
 
 document.getElementById('add').addEventListener('click', () => {
+    debugger;
     document.getElementById('container_schedule').style.display = 'block';
     document.getElementById('add').innerHTML = '<span class="material-icons">done</span>';  
     let inputNewTask = document.getElementById("todo");
@@ -38,19 +39,12 @@ document.getElementById('add').addEventListener('click', () => {
     }
 } );
 document.getElementById('date').addEventListener('change',() => {
-    // alert("New date");
     time.style.display = 'flex';
 });
-
-// if(chosenDate.value == null){
-//     // debugger;
-//     console.log("It has a value " + chosenDate.value);
-// }
 
 
  function taskCreated(){
     document.getElementById('container_schedule').style.display = 'none';
-    // debugger;
     if(document.getElementsByClassName('notes').length >= 1){
         document.getElementsByClassName('notes')[0].remove();
     }
@@ -98,12 +92,10 @@ $("input[name=time]").clockpicker({
   
 
   function isBlank(str) {
-    //debugger;
     return (!str || /^\s*$/.test(str));
 }
 
 function valDate(dateToDo){
-    // debugger;
     if(dateToDo === null || dateToDo === ''){
         dateToDo = "No date";
         return dateToDo;
@@ -131,7 +123,6 @@ function manageTask(getTask,dateSet){
 
 
 function addToLocalStorage(toDoList){
-    // debugger;
     localStorage.setItem('toDoList',JSON.stringify(toDoList));
 
     renderTodos(toDoList);
@@ -148,7 +139,6 @@ function renderTodos(toDoList){
         let currentTasks = document.createElement('li');
         currentTasks.id = valInputNewTask2.id;
         currentTasks.setAttribute('style','display:flex;background-color:#519872;width:100%;border-radius:7px;margin:0 0 10px 0;padding:6px 4px 6px 4px;min-height:3em;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;');
-        
       
 
         currentTasks.innerHTML = '<input id='+index+' type = "checkbox"  class="checkInactive"><div style="display:flex;flex-direction:column;flex-grow:2;"><span style="margin-left:2em;">'+valInputNewTask2.content+'</span><span style="margin-left:2em;color:#17301C;">'+valInputNewTask2.date+'</span></div><div class="clear"><span class="material-icons">clear</span></div>';
@@ -172,42 +162,14 @@ function getFromLocalStorage(){
     }
 }
 
-// document.querySelector('.dropBtn').addEventListener('click',() => {
-//     debugger;
-//     document.getElementById('myDropdown').classList.toggle('show');
-// });
+
 
 function showModal(){
     document.getElementById('myDropdown').classList.toggle('show');
 }
 
-//     let dropDown_header = document.createElement('div');
-    
-//     dropDown_header.setAttribute('class','dropdown-content');
-//     dropDown_header.innerHTML = '<span>Finished</span>';
-//     document.getElementById('filter-tasks').appendChild(dropDown_header);
-//     //filter-tasks
-// })
-// debugger;
-// let checkbox = document.getElementById('parentList');
-// checkbox.addEventListener('change',function(e){
-//     // debugger;
-//     let idOfList = e.path[1].id;
-//     if(toDoList[e.path[0].id].completed == false){
-//         // alert("change to completed")
-//         toDoList[e.path[0].id].completed = true;
-//         document.getElementById(idOfList).childNodes[1].classList.add('checkActive');   //  setAttribute('style','text-decoration:line-through;');
-//     }
-//     let y = e.path[1].id;
-//     let x = this.childNodes[2].firstElementChild;
-//     if(x.checked){
-//         // alert('checked');
-//         this.firstChild.firstChild.setAttribute('style','opacity:1;border-top-color: transparent;border-left-color: transparent;transform: rotate(45deg);-webkit-transform: rotate(45deg);border-radius: 0;left: 5px;top: -5px; width: 10px;')
-//     }else {
-//         // this.firstChild.firstChild.setAttribute("style","position: absolute;left: 0;top: 0;opacity: .6;transition: all .12s, border-color .08s;width: 20px;border: 1px solid #6cc0e5;")
 
-//     }
-// });
+
 
 getFromLocalStorage();
 
@@ -222,43 +184,21 @@ function toggle(id){
 }
 
 function deleteToDo(id){
-    debugger
     // alert(id);
     toDoList = toDoList.filter(function(getTask){
         return getTask.id != id;
     });
     addToLocalStorage(toDoList);
 }
-debugger;
 ulTasks.addEventListener('click',function(event){
-    debugger;
     if(event.target.type === 'checkbox'){
         toggle(event.target.parentElement.getAttribute('id'));
     }
     if(event.target.parentElement.classList.contains('clear')){
-        debugger;
         deleteToDo(event.target.parentElement.parentElement.getAttribute('id'));
     }
 });
 
-
-//https://codepen.io/thecodingpie/pen/ExPQdqb?editors=1010
-
-//Local Storage Function
-// function storeData(todo){
-//     debugger;
-//     let toDoList = null;
-//     let storedL = localStorage["toDoList"];
-//     if(storedL == null){
-//         toDoList = [];
-//     } else {
-//         toDoList = JSON.parse(storedL);
-//     }
-//        toDoList.push(todo);
-//        let allToDo = JSON.stringify(toDoList);
-//        localStorage["toDoList"] = allToDo;
-//        buildListOfTasks();
-// }
 
 
 //Close the dropdown if the user clicks outside it
@@ -272,14 +212,42 @@ window.onclick = function(e) {
   } 
 
 
-//   function getList(){
-//       alert('pruebas');
-//   }
-
 //Drop down Events
 document.getElementById("myDropdown").addEventListener('click',function(event){
-    debugger;
     if(event.target.localName === 'span'){
-        alert(event.target.id);
+        filterToDoList(event.target.id);
     }
 });
+
+function filterToDoList(id){
+    let toDoListSplitted = toDoList;
+    toDoList.forEach(function(item,index){
+            if(id === 'select2'){ //ACTIVE
+                if(item.completed === true){ //Mostrar solo las tareas activas
+                    document.getElementById(item.id).style.display = 'none';
+                }
+                else {
+                    document.getElementById(item.id).style.display = 'flex';        
+                     }
+                     document.getElementById('buttonForList').innerHTML = 'Active<span class="material-icons" style="vertical-align: middle;">arrow_drop_down</span>';
+            }
+            else if (id === 'select3'){
+                if(item.completed === false){ //Msotrar solo las tareas completadas
+                    document.getElementById(item.id).style.display = 'none';
+                }
+                else {
+                    document.getElementById(item.id).style.display = 'flex';  
+                   
+                }
+                document.getElementById('buttonForList').innerHTML = 'Completed<span class="material-icons" style="vertical-align: middle;">arrow_drop_down</span>';
+
+            }
+            else {
+                if(document.getElementById(item.id).style.display = 'none'){
+                document.getElementById(item.id).style.display = 'flex';  
+                }
+                document.getElementById('buttonForList').innerHTML = 'All Lists<span class="material-icons" style="vertical-align: middle;">arrow_drop_down</span>';
+
+            }
+        });
+}
