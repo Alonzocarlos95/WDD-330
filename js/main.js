@@ -105,7 +105,7 @@ const WeekExercises = [
     ["W04/exercises/forms.html",note4],
     ["W05/exercises/testingInJavascript.html",note5],
     ["W06/exercises/",note6],
-    ["W07/exercises/",note7],
+    ["W07/exercises/ajaxExample.html",note7],
     ["W08/exercises/",note8],
     ["W09/exercises/",note9],
     ["W10/exercises/",note10],

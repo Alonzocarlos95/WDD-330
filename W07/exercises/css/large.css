@@ -1,0 +1,40 @@
+nav {
+    background-color: #566246;
+}
+
+nav ul{
+    display:flex;
+    text-decoration: none;
+    list-style: none;
+    justify-content: space-around;
+}
+
+nav ul li{
+    color: #F1F2EB;
+}
+
+main {  
+    width: 70%;
+    margin:auto;
+}
+
+main h1{
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    margin-top: 1em;
+}
+
+#result{
+    margin: 2em 0.5em 1em 0.5em;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+#result img{
+    max-width: 15em;
+    padding: 5px;
+}
