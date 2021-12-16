@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,800');
+
+header {
+    background-color: #22223B;
+}
+
+header nav ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+header nav ul li {
+    color: #F2E9E4;
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    padding: 10px 25px;
+}
+
+
+
+header nav ul li:hover {
+    transform: scale(1.25,1.25);
+    color: #C9ADA7;
+}
+
+body {
+    background-color: #F2E9E4;
+}
+
+main h1 {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1em auto;
+}
+
+.adder {
+    position: relative;
+    width: 250px;
+    margin: 0px auto;
+    display: block;
+}
+
+.input {
+    outline: none;
+    border: 1px solid #22223B;
+    background-color: #F2E9E4;
+    height: 50px;
+    width: 250px;
+    padding-left: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    margin-left: -5px;
+}
+
+.adder span {
+    position: absolute;
+      right: 9px;
+      top: 0;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.8;
+      cursor: pointer;
+      transition: all 200ms;
+      color: #22223B;
+      will-change: transform;
+}
+
+main ul{
+    padding:0px
+}
+
+.draggable {
+    will-change: transform;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      height: 50px;
+      list-style-type: none;
+      margin: 10px;
+      background-color: #4A4E69;
+      color: #F2E9E4;
+      width: 250px;
+      line-height: 3.2;
+      padding-left: 10px;
+      cursor: move;
+      transition: all 200ms;
+      user-select: none;
+      margin: 10px auto;
+      position: relative;
+}
+
+.draggable::after {
+    content: 'drag me';
+        right: 7px;
+        font-size: 10px;
+        position: absolute;
+        cursor: pointer;
+        line-height: 5;
+        transition: all 200ms;
+        transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.50);
+        transform: translateX(120%);
+        opacity: 0;
+}
+
+.over {
+    transform: scale(1.1, 1.1);
+  }
