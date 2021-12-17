@@ -91,7 +91,7 @@ let note5 = "This week I learned testing and debugging tools in javascript. Java
 let note6 = "No Available";
 let note7 = "This week I learned to use further functions.</br> I practiced several exercises with callbacks, promises, async functions and Immediately Invoked Functions(IIFE).</br>The most important concept I learned this week was to implement the web development technique used in order to send and retrieve data in the background without refreshing the webpage, the name of this technique is AJAX.<br> AJAX stands for Asynchronous Javascript XML.</br> AJAX is the use of the XMLHTTPRequest object to communicate with servers.";
 let note8 = "It was an outstanding week. I could bolster my knowledge on CSS by implementing CSS Transitions and Animations.</br> For this week´s exercises I created an application that uses transitions and the drag and drop API. With transforms, transitions, and animations, your site will look more dynamic.</br>CSS Transforms are widely supported by all the modern browsers.</br> Transform´s property have the following functions: Translation, Scaling, Rotation and Skew.";
-let note9 = "No Available";
+let note9 = "On week nine, I learned about the Window Object Model, which represents the browser's frame or window in which the webpage is contained.</br>The window object can be used to find out what the browser is running, the pages visited, size of browser window or user screen, alter text in browser status bars, open new windows , change the page that is loaded.</br>The window object is a Global Object, ";
 let note10 = "No Available";
 let note11 = "No Available";
 let note12 = "No Available";
@@ -107,7 +107,7 @@ const WeekExercises = [
     ["W06/exercises/",note6],
     ["W07/exercises/ajaxExample.html",note7],
     ["W08/exercises/w08.html",note8],
-    ["W09/exercises/",note9],
+    ["W09/exercises/w09.html",note9],
     ["W10/exercises/",note10],
     ["W11/exercises/",note11],
     ["W12/exercises/",note12],

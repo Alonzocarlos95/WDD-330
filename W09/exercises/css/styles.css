@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+header nav ul{
+    display: flex;
+    list-style-type: none;
+    background-color: #a83b24;
+    justify-content: space-between;
+}
+
+header nav ul li{
+    color: #fff;
+    padding: 0.5em;
+}
+
+main {
+    margin: 2em auto;
+    width: 50%;
+}
+
+#btn {
+    background-color: #171e13;
+    color: blanchedalmond;
+    margin: 2em;
+    cursor: pointer;
+}
