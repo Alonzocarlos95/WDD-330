@@ -1,3 +1,12 @@
+const url_video = "https://youtu.be/vu8b4RqvQ48"
+let linkVideoInput = document.getElementById("videoUrl");
+linkVideoInput.value = url_video;
+
+let clipboard = document.getElementById("clipboard1");
+let mp4 = document.getElementById("mp4_btn");
+let urlBtn = document.getElementById("url_btn");
+let vOptionList = document.getElementById("videoOptionList");
+
 const list = [
     {
         label:"Week-01",
@@ -180,3 +189,60 @@ function myFunction(x){
 //     document.getElementById('item').style.color = "#FF0000"
 //     alert('Gotcha');
 // }
+
+
+vOptionList.addEventListener("click",() => {
+    document.getElementById("dropResources").classList.add("show");
+})
+
+//Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event){
+    debugger;
+    if(event.target.className == "spn_resources"){
+
+    }
+    if(!event.target.matches('.resources_tab') && !event.target.matches('.spn_resources') && !event.target.matches('.format_list') && !event.target.matches('#url_btn') && !event.target.matches('#mp4_btn') && !event.target.matches('#videoUrl') && !event.target.matches('.clipboard_container') && !event.target.matches('#clipboard_icon') && !event.target.matches('.dropDown_resources')){
+        console.log(event.target.value);
+        let dropdown = document.getElementById('dropResources');
+        if(dropdown.classList.contains('show')){
+            dropdown.classList.remove('show');
+        }
+    }
+}
+
+
+clipboard.addEventListener("click",() => {
+    debugger;
+    let copyText = document.getElementById("videoUrl");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied!";
+tooltip.style.visibility="visible";
+tooltip.style.opacity="1";
+});
+
+linkVideoInput.onfocus = function(){
+    linkVideoInput.style.borderColor = "#4dabf7 !important";
+    linkVideoInput.style.boxShadow = "inset 0 1px 1px rgb(0 0 0 / 1%), 0 0 8px rgb(34 139 230 / 50%)";
+    linkVideoInput.style.borderWidth = "0.29rem !important";
+}
+
+linkVideoInput.onblur = function(){
+    linkVideoInput.style.borderColor = "#dee2e6";
+    linkVideoInput.style.boxShadow = "none";
+    linkVideoInput.style.borderWidth = "0.2rem !important";
+}
+
+
+mp4.addEventListener("click",() => {
+    mp4.classList.add("active_tab");
+    urlBtn.classList.remove("active_tab");
+});
+
+urlBtn.addEventListener("click",() => {
+    urlBtn.classList.add("active_tab");
+    mp4.classList.remove("active_tab");
+});
+
