@@ -4,6 +4,7 @@ linkVideoInput.value = url_video;
 
 let clipboard = document.getElementById("clipboard1");
 let mp4 = document.getElementById("mp4_btn");
+document.getElementById("mp4_container").style.display="none";
 let urlBtn = document.getElementById("url_btn");
 let vOptionList = document.getElementById("videoOptionList");
 
@@ -191,18 +192,16 @@ function myFunction(x){
 // }
 
 
-vOptionList.addEventListener("click",() => {
+vOptionList.addEventListener("click",function(event) {
+    debugger;
+    if(event.target.classList[1] == "indentifier"){
     document.getElementById("dropResources").classList.add("show");
+    }
 })
 
 //Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event){
-    debugger;
-    if(event.target.className == "spn_resources"){
-
-    }
     if(!event.target.matches('.resources_tab') && !event.target.matches('.spn_resources') && !event.target.matches('.format_list') && !event.target.matches('#url_btn') && !event.target.matches('#mp4_btn') && !event.target.matches('#videoUrl') && !event.target.matches('.clipboard_container') && !event.target.matches('#clipboard_icon') && !event.target.matches('.dropDown_resources')){
-        console.log(event.target.value);
         let dropdown = document.getElementById('dropResources');
         if(dropdown.classList.contains('show')){
             dropdown.classList.remove('show');
@@ -217,10 +216,10 @@ clipboard.addEventListener("click",() => {
     copyText.select();
     copyText.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(copyText.value);
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copied!";
-tooltip.style.visibility="visible";
-tooltip.style.opacity="1";
+//   var tooltip = document.getElementById("myTooltip");
+//   tooltip.innerHTML = "Copied!";
+// tooltip.style.visibility="visible";
+// tooltip.style.opacity="1";
 });
 
 linkVideoInput.onfocus = function(){
@@ -239,10 +238,28 @@ linkVideoInput.onblur = function(){
 mp4.addEventListener("click",() => {
     mp4.classList.add("active_tab");
     urlBtn.classList.remove("active_tab");
+
 });
 
 urlBtn.addEventListener("click",() => {
     urlBtn.classList.add("active_tab");
     mp4.classList.remove("active_tab");
+    // document.getElementById("mp4_container").display="none";
+    // document.getElementById("link_container").display="flex";
 });
 
+document.querySelectorAll(".format_list")[0].addEventListener("click",function(event) {
+    debugger;
+    if(event.target.id === "url_btn"){
+    document.getElementById("mp4_container").style.display="none";
+    document.getElementById("link_container").style.display="flex";  
+    }
+    else if(event.target.id === "mp4_btn"){
+    document.getElementById("link_container").style.display="none";
+    document.getElementById("mp4_container").style.display="flex";
+    }
+    else{
+        console.log("Please select an element");
+    }
+
+})

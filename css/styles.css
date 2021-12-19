@@ -101,6 +101,7 @@ footer {
     position: absolute;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 6px;
     top: 4.8em;
     right: 2em;
     z-index: 1000;
@@ -198,6 +199,20 @@ input[type="checkbox"] {
       font-weight: bold;
       font-size: 14px;
   }
+
+.donwload_video_container{
+    margin: 5px;
+    padding-top: 8px;
+}
+
+.donwload_container a span {
+    position: absolute;
+    left: 40px;
+    color: #778DA9;
+}
+.donwload_container a i{
+    color: #1B263B;
+}
 
   .active_tab{
     border-bottom: 2px solid #778DA9 !important;
