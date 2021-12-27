@@ -134,7 +134,7 @@ const WeekChallenges = [
     ["W06/challenges/todolist/home.html"],
     ["W07/exercises/"],
     ["W08/exercises/"],
-    ["W09/exercises/"],
+    ["W09/challenges/covidApi.html"],
     ["W10/exercises/"],
     ["W11/exercises/"],
     ["W12/exercises/"],
