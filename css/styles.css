@@ -179,6 +179,29 @@ input[type="checkbox"] {
     border-color: #555 transparent transparent transparent;
   } 
 
+  /* .dropDown_resources::after {
+      content: "";
+      top: 45px;
+      right: 10px;
+      left: auto;
+      margin-left: -5px;
+      border: 7px solid transparent;
+      border-bottom-color: #000;
+      margin-top: 78px;
+      margin-right: 40px;
+  } */
+
+  .dropDown_resources::before {
+    content: "";
+    top: 23px;
+    right: 10px;
+    left: auto;
+    margin-left: -5px;
+    border: 7px solid transparent;
+    border-bottom-color: #000;
+    
+    display: none;
+}
   .link_video_container input:focus {
     border:1px solid #778DA9 !important;
     outline: none !important;
