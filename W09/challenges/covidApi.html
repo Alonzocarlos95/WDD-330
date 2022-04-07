@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<link rel="stylesheet" href="css/large.css" media="screen">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <ul>
+                <li><div class="covid_header">
+                    <h1>COVID-19 Tracker</h1>
+                    <i class="material-icons">coronavirus</i>
+                    </div></li>
+                <li><button id="donate_btn">DONATE<i id="donate_icon" class="material-icons" style="font-size: 20px;padding-left:8px;">favorite</i></button></li>
+            </ul>
+        </nav>
+        </header>
+    <div  class="m_dashboard">
+        <!-- <div class="indica_global">
+            <figure class="highcharts-figure">
+                <div id="container_gauge"></div>
+                <p class="highcharts-description">
+                  A chart showing multiple gauge series arcing around the center point,
+                  similar to the activity chart found on the Apple Watch. Each gauge has a
+                  custom icon, and the tooltip is positioned statically in the center.
+                </p>
+              </figure>
+        </div> -->
+        <div class="content-column">
+    <div class="covid_cases">
+        <div><h2>Coronavirus Cases</h2></div>
+        <span id="get_global_cases"></span>
+    </div>    
+    <div class="covid_cases">
+        <div><h2>Recovered</h2></div>
+        <span id="get_global_recovered"></span>
+    </div>    
+    <div class="covid_cases">
+        <div><h2>Deaths</h2></div>
+        <span id="get_global_deaths"></span>
+    </div>    
+</div>
+    <div id="container" style="max-width: 1000px"></div>
+     </div>
+     <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="donation-form">
+                <div class="top-formBar"></div>
+                <div class="collection">
+                    <div class="collection_amount">
+                    <span>$2583943</span>
+                    <span>Collected</span>
+                    </div>
+                    <div class="collection_amount">
+                    <span>$4000000</span>
+                    <span>Goal</span>
+                    </div>
+                </div>
+                <div class="quantity_section">
+                <div class="quantity_containter">
+                    <div class="quantity_options">
+                        <span class="label_amount">Choose Amount</span>
+                        <i class="material-icons lock_icon">lock</i>
+                        <div class="nav_carousel">
+                            <span class="carousel__button carousel__button--selected"></span>
+                            <span class="carousel__button"></span>
+                            <span class="carousel__button"></span>
+                        </div>
+                        <i class="material-icons east_arrow_icon">east</i>
+                    </div>
+                </div>
+                <div class="widget-container">
+                    <form id="new_donation" method="get">
+                        <div class="plan_duration" id="durationPlan_btn">
+                            <span class="active_plan">One-Time</span>
+                            <span>Monthly</span>
+                        </div>
+                        <div class="suggested-amount-boxes">        
+                            <label class="selected-amount">
+                                <span>$</span>
+                                <span>35</span>
+                            </label>
+                            <label>
+                                <span>$</span>
+                                <span>50</span>
+                            </label>
+                            <label>
+                                <span>$</span>
+                                <span>100</span>
+                            </label>
+                        </div>
+                        <div class="suggested-amount-boxes">        
+                            <label>
+                                <span>$</span>
+                                <span>250</span>
+                            </label>
+                            <label>
+                                <span>$</span>
+                                <span>500</span>
+                            </label>
+                            <label>
+                                <span>$</span>
+                                <span>1000</span>
+                            </label>
+                        </div>
+                        <div class="specific-amount">
+                            <input type="number" id="specific_amount_donation" name="other_amount" placeholder="Custom Amount">
+                            <i class="material-icons">attach_money</i>
+                        </div>    
+                        <div class="dedication-section">
+                            <input type="checkbox" name="dedication" id="dedication_donation">
+                            <span>Dedicate my donation in honor or in memory of someone</span>
+                        </div>
+                        <div class="next-btn">
+                            <button>Next<i class="material-icons">arrow_forward</i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="information_section">
+                <div class="information_container">
+                    <div class="information_options">
+                        <i class="material-icons">arrow_back</i>
+                        <span class="info_text">Information</span>
+                        <i class="material-icons lock_icon">lock</i>
+                        <div class="nav_carousel">
+                            <span class="carousel__button carousel__button--selected"></span>
+                            <span class="carousel__button"></span>
+                            <span class="carousel__button"></span>
+                        </div>
+                        <i class="material-icons">arrow_forward</i>
+                    </div>
+                </div>
+                <div class="personal-info-inputs">
+                    <div class="names-content">
+                        <div class="name-data">
+                            <i class="material-icons">person</i>
+                            <input type="text" id="donation_name" required>
+                            <label>Name</label>
+                        </div>
+                        <div class="name-data">
+                            <input type="text" id="donation_lastName" class="inp-lastName" required>
+                            <label class="lbl_lastName">Last Name</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>   
+    <!-- <script src="js/main.js"></script>    -->
+    <script src="js/highchart.js"></script>
+</body>
+</html>
